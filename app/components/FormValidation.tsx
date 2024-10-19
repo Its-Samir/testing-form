@@ -17,11 +17,11 @@ const formSchema = useFormSchema({
 			value: 8, // by default 6
 		},
 	},
-	age: { type: "number", min: { value: 18 } },
+	age: { type: "number", optional: true},
 });
 
 // create the form
-const Form = createFormValidator<typeof formSchema>();
+const Form = createFormValidator(formSchema);
 
 export default function FormValidation() {
 	function handleSubmit(data: z.infer<typeof formSchema>) {
