@@ -2,29 +2,14 @@
 
 "use client";
 
-import { z } from "zod";
-import { useFormSchema, createFormValidator } from "formaze";
+import { createFormValidator } from "formaze";
 import "formaze/dist/style.css";
+import { formSchema } from "../../lib/schema";
 
-// create the validation schema
-const formSchema = useFormSchema({
-	username: {
-		type: "string",
-	},
-	password: {
-		type: "password",
-		minLength: {
-			value: 8, // by default 6
-		},
-	},
-	age: { type: "number", optional: true},
-});
-
-// create the form
 const Form = createFormValidator(formSchema);
 
 export default function FormValidation() {
-	function handleSubmit(data: z.infer<typeof formSchema>) {
+	function handleSubmit(data: any) {
 		const result = formSchema.safeParse(data);
 
 		if (!result.success) throw new Error("Invalid inputs");
