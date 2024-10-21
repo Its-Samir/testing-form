@@ -4,7 +4,7 @@
 
 import { createFormValidator } from "formaze";
 import "formaze/dist/style.css";
-import { formSchema } from "../../lib/schema";
+import { formSchema } from "@/lib/schema";
 
 const Form = createFormValidator(formSchema);
 
